@@ -1,0 +1,12 @@
+# Service Account Keys (not needed for REST API version, but keep for safety)
+serviceAccountKey.json
+*-service-account-key.json
+
+# Node modules (not needed for REST API version)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+

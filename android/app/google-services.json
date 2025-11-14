@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "977487640453",
+    "project_id": "findroom-6470a",
+    "storage_bucket": "findroom-6470a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977487640453:android:05cb0f16fed2ca755976ec",
+        "android_client_info": {
+          "package_name": "com.findroommate.app.find_roommate_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPhFLwX_HWUc_itKAul4TdRIA2prV7Lis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+
