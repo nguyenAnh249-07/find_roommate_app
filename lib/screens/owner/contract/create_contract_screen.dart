@@ -463,14 +463,32 @@ class _CreateContractScreenState extends ConsumerState<CreateContractScreen> {
 
                   return DropdownButtonFormField<String>(
                     value: _selectedRoomId,
+                    isExpanded: true,
                     decoration: const InputDecoration(
                       labelText: 'Chọn phòng',
                       prefixIcon: Icon(Icons.home),
                     ),
+                    selectedItemBuilder: (BuildContext context) {
+                      return ownerRooms.map<Widget>((room) {
+                        return Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Text(
+                            room.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
+                          ),
+                        );
+                      }).toList();
+                    },
                     items: ownerRooms.map((room) {
-                      return DropdownMenuItem(
+                      return DropdownMenuItem<String>(
                         value: room.id,
-                        child: Text(room.title),
+                        child: Text(
+                          room.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       );
                     }).toList(),
                     onChanged: (value) {
@@ -667,6 +685,7 @@ class _CreateContractScreenState extends ConsumerState<CreateContractScreen> {
                               constraints: const BoxConstraints(maxHeight: 120),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.vertical,
+                                physics: const AlwaysScrollableScrollPhysics(),
                                 child: Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
@@ -809,6 +828,7 @@ class _TenantSelectionDialogState extends State<_TenantSelectionDialog> {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
@@ -840,12 +860,16 @@ class _TenantSelectionDialogState extends State<_TenantSelectionDialog> {
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(height: 16),
             Flexible(
               child: ListView.builder(
                 shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
                 itemCount: tenantIds.length,
                 itemBuilder: (context, index) {
                   final tenantId = tenantIds[index];
@@ -889,6 +913,7 @@ class _TenantSelectionDialogState extends State<_TenantSelectionDialog> {
                         horizontal: 8,
                         vertical: 4,
                       ),
+                      isThreeLine: false,
                       secondary: CircleAvatar(
                         radius: 20,
                         backgroundImage: user.avatarUrl != null
@@ -963,13 +988,15 @@ class _TenantSelectionDialogState extends State<_TenantSelectionDialog> {
                                         color: theme.colorScheme.onSurfaceVariant,
                                       ),
                                       const SizedBox(width: 4),
-                                      Text(
-                                        '${request.durationMonths} tháng',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: theme.textTheme.bodySmall?.copyWith(
-                                          color: theme.colorScheme.onSurfaceVariant,
-                                          fontSize: 11,
+                                      Flexible(
+                                        child: Text(
+                                          '${request.durationMonths} tháng',
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: theme.textTheme.bodySmall?.copyWith(
+                                            color: theme.colorScheme.onSurfaceVariant,
+                                            fontSize: 11,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -986,11 +1013,15 @@ class _TenantSelectionDialogState extends State<_TenantSelectionDialog> {
                                     color: theme.colorScheme.primary,
                                   ),
                                   const SizedBox(width: 4),
-                                  Text(
-                                    'Người ở ghép',
-                                    style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.colorScheme.primary,
-                                      fontSize: 11,
+                                  Flexible(
+                                    child: Text(
+                                      'Người ở ghép',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: theme.textTheme.bodySmall?.copyWith(
+                                        color: theme.colorScheme.primary,
+                                        fontSize: 11,
+                                      ),
                                     ),
                                   ),
                                 ],
